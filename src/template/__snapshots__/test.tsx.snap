@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalContent /> should open modal 1`] = `
+.c0 {
+  top: 0;
+  right: 0;
+  z-index: 999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 15px;
+  padding: 5px;
+  cursor: pointer;
+  position: absolute;
+  color: #333;
+  border-radius: 10px;
+}
+
+.c0:hover {
+  background: #111112;
+  color: #fff;
+}
+
+<body>
+  <div>
+    <button
+      class="c0"
+    >
+      <svg
+        data-testid="openEye"
+        fill="currentColor"
+        height="20"
+        viewBox="0 0 256 256"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="none"
+          height="256"
+          width="256"
+        />
+        <path
+          d="M128,56C48,56,16,128,16,128s32,72,112,72,112-72,112-72S208,56,128,56Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <circle
+          cx="128"
+          cy="128"
+          fill="none"
+          r="40"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+      </svg>
+    </button>
+  </div>
+</body>
+`;
