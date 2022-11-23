@@ -4,6 +4,6 @@ import {
 } from "@apollo/client";
 
 export const client = new ApolloClient({
-  uri: 'https://find-places.vercel.app/',
+  uri: 'https://find-places.vercel.app',
   cache: new InMemoryCache(),
 });
