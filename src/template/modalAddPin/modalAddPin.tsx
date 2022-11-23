@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { StyledInfo } from ".";
 import { CircleNotch, X } from "phosphor-react";
 import { InputTypes } from "./types";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { Modal } from "../../components/modal/modal";
 import { Input } from "../../components/input/input";
 import { gql, useMutation, } from "@apollo/react-hooks";
@@ -26,7 +26,6 @@ export const ModalAddPin: React.FC = () => {
   const router = useRouter()
   const [modal, setModal] = useState(false)
   const [info, setInfo] = useState(false)
-  const [values, setValues] = useState<InputTypes>({ Nome: '', Imagem: '', Latitude: '', Longitude: '', Descrição: '' })
 
   const formMethod = useForm<InputTypes>({
     resolver: ValidationResolvers,
@@ -34,15 +33,6 @@ export const ModalAddPin: React.FC = () => {
   const { formState: { errors }, register, handleSubmit } = formMethod
 
   const [createPins, { loading }] = useMutation(CREATE_PIN)
-
-  function handleChange(e: FormEvent<HTMLInputElement>) {
-    const value = e.currentTarget.value
-    const name = e.currentTarget.name
-    setValues({
-      ...values,
-      [name]: value
-    })
-  }
 
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
     console.log(data)
@@ -53,7 +43,7 @@ export const ModalAddPin: React.FC = () => {
     })
 
     setModal(false)
-    router.reload()
+    router.refresh()
   }
 
   return (
@@ -72,10 +62,6 @@ export const ModalAddPin: React.FC = () => {
                   <Input.Label>Nome*</Input.Label>
                   <Input.Content
                     {...register("Nome")}
-                    name="Nome"
-                    autoFocus
-                    value={values.Nome}
-                    onChange={handleChange}
                     placeholder="nome aqui!"
                   />
                   {errors.Nome?.message && (
@@ -87,9 +73,6 @@ export const ModalAddPin: React.FC = () => {
                   <Input.Label>Imagem:</Input.Label>
                   <Input.Content
                     {...register("Imagem")}
-                    name="Imagem"
-                    value={values.Imagem}
-                    onChange={handleChange}
                     placeholder="Imagem aqui!"
                   />
                   {errors.Imagem?.message && (
@@ -101,9 +84,6 @@ export const ModalAddPin: React.FC = () => {
                   <Input.Label>Latitude*</Input.Label>
                   <Input.Content
                     {...register("Latitude")}
-                    name="Latitude"
-                    value={values.Latitude}
-                    onChange={handleChange}
                     placeholder="Latitude aqui!"
                   />
                   <StyledInfo>
@@ -122,9 +102,6 @@ export const ModalAddPin: React.FC = () => {
                   <Input.Label>Longitude*</Input.Label>
                   <Input.Content
                     {...register("Longitude")}
-                    name="Longitude"
-                    value={values.Longitude}
-                    onChange={handleChange}
                     placeholder="Longitude aqui!"
                   />
                   {errors.Longitude?.message && (
@@ -136,9 +113,6 @@ export const ModalAddPin: React.FC = () => {
                   <Input.Label>Descrição:</Input.Label>
                   <Input.Content
                     {...register("Descrição")}
-                    name="Descrição"
-                    value={values.Descrição}
-                    onChange={handleChange}
                     placeholder="Descrição aqui!"
                   />
                   {errors.Descrição?.message && (

@@ -9,7 +9,7 @@ export const StyledEye = styled.button`
   padding: 5px;
   cursor: pointer;
   position: absolute;
-  color: #333;
+  color: var(--dark-blue);
   border-radius: 10px;
 
   &:hover {

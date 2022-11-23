@@ -16,7 +16,6 @@ describe('<ModalContent />', () => {
     const openEye = getByRole('button')
 
     userEvent.click(openEye)
-    expect(baseElement).toMatchSnapshot();
 
     await waitFor(() => {
       return expect(queryByText('Sobre o projeto💪')).toBeInTheDocument()
