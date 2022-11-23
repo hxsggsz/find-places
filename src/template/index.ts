@@ -13,7 +13,7 @@ export const StyledEye = styled.button`
   border-radius: 10px;
 
   &:hover {
-    background: #111112;
-    color: #fff;
+    background: var(--dark-blue);
+    color: var(--white);
   }
 `;

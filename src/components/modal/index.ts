@@ -6,19 +6,27 @@ export const StyledRoot = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+    ); /* está assim ao invez do var(--grey) para deixar o fundo visivel ainda */
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    leaflet-popup-content-wrapper {
+      background: inherit;
+    }
 `;
 
 export const StyledContainer = styled.div`
   border-radius: 8px;
-  max-width: 50rem;
+  max-width: 40rem;
   padding: 10px;
-  background: #fff;
+  background: #207ac9;
   z-index: 999;
 `;
 
@@ -26,22 +34,25 @@ export const StyledTitle = styled.div`
   display: flex;
   padding-bottom: 10px;
   justify-content: space-between;
-  color: #4f4f4f;
+  color: #fff;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--dark-blue);
   z-index: 999;
 `;
 
-export const StyledIcon = styled.div`
+export const StyledIcon = styled.button`
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  background: none;
+  border: none;
   &:hover {
-    color: #111112;
+    color: var(--grey);
   }
 `;
 
 export const StyledBody = styled.div`
   text-align: justify;
+  color: var(--white);
   padding: 20px;
   h1 {
     text-align: center;

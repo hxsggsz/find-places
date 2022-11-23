@@ -1,13 +1,12 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { StyledBody, StyledContainer, StyledIcon, StyledRoot, StyledTitle } from ".";
 
 interface modalProps {
   children: ReactNode
 }
-// interface IconProps {
-//   children: ReactNode
-//   title: string
-// }
+interface IconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode
+}
 
 const modalRoot: React.FC<modalProps> = ({ children }: modalProps) => (
   <StyledRoot>{children}</StyledRoot>
@@ -15,14 +14,14 @@ const modalRoot: React.FC<modalProps> = ({ children }: modalProps) => (
 
 const modalContainer: React.FC<modalProps> = ({ children }: modalProps) => (
   <StyledContainer>{children}</StyledContainer>
-)
+) 
 
 const modalTitle: React.FC<modalProps> = ({ children }: modalProps) => (
   <StyledTitle>{children}</StyledTitle>
 )
 
-const modalIcon: React.FC<modalProps> = ({ children }: modalProps) => (
-  <StyledIcon>{children}</StyledIcon>
+const modalIcon: React.FC<IconProps> = ({ children, ...props }: IconProps) => (
+  <StyledIcon{...props}>{children}</StyledIcon>
 )
 
 const modalBody: React.FC<modalProps> = ({ children }: modalProps) => (

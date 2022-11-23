@@ -12,8 +12,8 @@ export const ModalContent: React.FC = () => {
           <Modal.Container>
             <Modal.Title >
               <h1>Sobre o projeto💪</h1>
-              <Modal.Icon>
-                <X data-testid='close' onClick={() => setModal(false)} size={20} />
+              <Modal.Icon onClick={() => setModal(false)}>
+                <X data-testid='close' size={20} />
               </Modal.Icon>
             </Modal.Title>
             <Modal.Body>

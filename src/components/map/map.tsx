@@ -1,10 +1,9 @@
+import Image from 'next/image'
 import { MapProps } from './types'
 import { Modal } from '../modal/modal'
+import { MapWrapper, Styledimage } from '.'
 import { gql, useQuery } from '@apollo/client'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import Image from 'next/image'
-import styled from 'styled-components'
-import { MapWrapper } from '.'
 
 const QUERY = gql`
   query Pins {
@@ -18,15 +17,6 @@ const QUERY = gql`
     } 
   }
 `
-const Styledimage = styled.div`
-  /* width: 220px;
-  height: 160px; */
-  display: flex;
-  justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
-`
-
 export const Map = () => {
   const { data } = useQuery<MapProps>(QUERY)
   // utilizando o GraqhQL via client side porque
@@ -53,7 +43,8 @@ export const Map = () => {
                 <Modal.Body>
                   <p>{place.description}</p>
                   <Styledimage>
-                    <Image style={{ borderRadius: 10 }} width={200} height={150} src={place.image} alt={place.name} />
+                    {/* eslint-disable-next-line @next/next/no-img-element */} {/*como o usuário pode colocar qualquer imagem no projeto, o atributo Image do next vai reclamar se o dominio de onde a foto for usada pelo usuario não estiver configurada no next.config.js */}
+                    <img style={{ borderRadius: 10 }} width={200} height={150} src={place.image} alt={place.name} />
                   </Styledimage>
                 </Modal.Body>
               </Modal.Container>

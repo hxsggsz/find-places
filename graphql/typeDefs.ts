@@ -13,4 +13,14 @@ export const typeDefs = gql`
   type Query {
     pins: [pins]
   }
+  input newPin {
+    name: String!
+    image: String
+    latitude: Float!
+    longitude: Float!
+    description: String
+  }
+  type Mutation {
+    createPins(input: newPin!): pins!
+  }
 `;

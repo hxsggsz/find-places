@@ -6,6 +6,7 @@ import { ApolloProvider } from "@apollo/client";
 import { client } from '../../graphql/apollo-client'
 import SEO from '../../next-seo.config'
 import { DefaultSeo } from 'next-seo';
+import { ModalAddPin } from '../template/modalAddPin/modalAddPin';
 
 function MyApp({ Component, pageProps }: AppProps) {
    return (
@@ -15,10 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
                crossOrigin="" />
          </Head>
-         <DefaultSeo {...SEO}/>
+         <DefaultSeo {...SEO} />
          <ModalContent />
          <GlobalStyle />
          <ApolloProvider client={client}>
+            <ModalAddPin />
             <Component {...pageProps} />
          </ApolloProvider>
       </>
