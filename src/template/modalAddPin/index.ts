@@ -18,8 +18,8 @@ export const StyledInfo = styled.div`
     padding: 10px;
     overflow: hidden;
     font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--white);
+    font-weight: 600;
+    color: var(--dark-blue);
     border-radius: 10px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   }

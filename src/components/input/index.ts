@@ -6,17 +6,14 @@ export const StyledInputRoot = styled.div`
 
 export const StyledInputContent = styled.input`
   width: 100%;
-  height: 28px;
+  height: 35px;
   margin: 5px;
   padding-left: 10px;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--dark-blue);
   border-radius: 4px;
-  border: 1px solid var(--grey);
-  &:focus {
-    background: var(--grey);
-    color: #000;
-    border: 1px solid var(--white);
-  }
+  font-weight: bold;
+  background: var(--white);
+  border: 2px solid var(--grey);
 `;
 
 export const StyledLabel = styled.label`

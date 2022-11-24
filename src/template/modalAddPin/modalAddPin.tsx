@@ -9,6 +9,7 @@ import { gql, useMutation, } from "@apollo/react-hooks";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Submit } from "../../components/button/button";
 import { ValidationResolvers } from "./validations/validations";
+import { Loading } from '../../components/loading/loading';
 
 const CREATE_PIN = gql`
   mutation createPins($name: String!, $image: String, $latitude: Float!, $longitude: Float!, $description: String ) {
@@ -24,6 +25,7 @@ const CREATE_PIN = gql`
 
 export const ModalAddPin: React.FC = () => {
   const router = useRouter()
+  const [loading, setLoading] = useState(false)
   const [modal, setModal] = useState(false)
   const [info, setInfo] = useState(false)
 
@@ -32,15 +34,19 @@ export const ModalAddPin: React.FC = () => {
   })
   const { formState: { errors }, register, handleSubmit } = formMethod
 
-  const [createPins, { loading }] = useMutation(CREATE_PIN)
+  const [createPins] = useMutation(CREATE_PIN)
 
-  const onSubmit: SubmitHandler<InputTypes> = (data) => {
+  const onSubmit: SubmitHandler<InputTypes> = async (data) => {
     console.log(data)
     createPins({
       variables: {
         name: data.Nome, image: data.Imagem, latitude: data.Latitude, longitude: data.Longitude, description: data.Descrição
       }
     })
+
+    setLoading(true)
+    await new Promise(r => setTimeout(r, 2000));
+    setLoading(false)
 
     setModal(false)
     router.refresh()
@@ -119,7 +125,7 @@ export const ModalAddPin: React.FC = () => {
                     <Input.Error>{errors.Descrição?.message}</Input.Error>
                   )}
                 </Input.Root>
-                <Submit type="submit" >{loading ? <CircleNotch size={20} /> : 'Enviar'}</Submit>
+                <Submit type="submit" >{loading ? <Loading /> : 'Enviar'}</Submit>
               </form>
             </Modal.Body>
           </Modal.Container>

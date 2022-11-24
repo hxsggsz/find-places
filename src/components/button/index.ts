@@ -25,9 +25,7 @@ export const StyledSubmit = styled.button`
   color: #fff;
   border: 0.5px solid #111112;
   box-shadow: 2px 5px 2px 1px rgba(0, 0, 0, 0.2);
-  padding-bottom: 3px;
   &:focus {
-    padding-bottom: 0;
     background: var(--white);
     color: #111112;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
